@@ -22,7 +22,7 @@ const NFTmint = ({ openModal, setModalState }: NFTMintProps) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [previewUrl, setPreviewUrl] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
-  
+
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   // Wallet + notification hooks
@@ -64,7 +64,7 @@ const NFTmint = ({ openModal, setModalState }: NFTMintProps) => {
 
     enqueueSnackbar('Uploading and preparing NFT...', { variant: 'info' })
     let metadataUrl = ''
-    
+
     try {
       // ---------------------------------
       // Detect backend URL automatically
@@ -114,7 +114,7 @@ const NFTmint = ({ openModal, setModalState }: NFTMintProps) => {
       // ------------------------------
       // Mint ASA (NFT) on Algorand
       // ------------------------------
-      enqueueSnackbar('Minting NFT on Algorand...', { variant: 'info' })
+      enqueueSnackbar('Minting IFM NFT on Algorand...', { variant: 'info' })
 
       // Hash the metadata URL (demo shortcut).
       // ARC-3 standard would hash the JSON bytes instead.
@@ -124,10 +124,10 @@ const NFTmint = ({ openModal, setModalState }: NFTMintProps) => {
       const createNFTResult = await algorand.send.assetCreate({
         sender: activeAddress,
         signer: transactionSigner,
-        total: 1n,                     // supply = 1 → NFT
+        total: 2n,                     // supply = 1 → NFT
         decimals: 0,                   // indivisible
-        assetName: 'MasterPass Ticket',// <— change name
-        unitName: 'MTK',               // <— change ticker
+        assetName: 'Invincible Ticket',// <— change name
+        unitName: 'IFMT',               // <— change ticker
         url: metadataUrl,              // IPFS metadata
         metadataHash,
         defaultFrozen: false,
@@ -149,7 +149,7 @@ const NFTmint = ({ openModal, setModalState }: NFTMintProps) => {
             </a>
           ) : null,
       });
-      
+
       // Reset form + close modal
       setSelectedFile(null)
       setPreviewUrl('')
@@ -169,9 +169,9 @@ const NFTmint = ({ openModal, setModalState }: NFTMintProps) => {
       <div className="modal-box bg-neutral-800 text-gray-100 rounded-2xl shadow-xl border border-neutral-700 p-6">
         <h3 className="flex items-center gap-3 text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-500 mb-6">
           <AiOutlineCloudUpload className="text-3xl" />
-          Mint a MasterPass NFT
+          Mint an Eleven NFT
         </h3>
-        
+
         <div className="space-y-4">
           <label className="block text-sm font-medium text-gray-400">
             Select an image to mint
@@ -199,7 +199,7 @@ const NFTmint = ({ openModal, setModalState }: NFTMintProps) => {
             />
           </div>
         </div>
-        
+
         {/* Action buttons */}
         <div className="modal-action mt-6 flex flex-col-reverse sm:flex-row-reverse gap-3">
           <button

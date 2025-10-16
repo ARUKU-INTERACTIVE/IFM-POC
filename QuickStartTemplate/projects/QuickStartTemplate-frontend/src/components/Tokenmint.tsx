@@ -19,10 +19,10 @@ const Tokenmint = ({ openModal, setModalState }: TokenMintProps) => {
   const LORA = 'https://lora.algokit.io/testnet';
 
   // 👇 Default placeholder values (safe customization points for learners)
-  const [assetName, setAssetName] = useState<string>('MasterPass Token') // token name
-  const [unitName, setUnitName] = useState<string>('MPT')               // short ticker
-  const [total, setTotal] = useState<string>('1000')                    // human-readable total
-  const [decimals, setDecimals] = useState<string>('0')                 // 0 = whole tokens only
+  const [assetName, setAssetName] = useState<string>('Eleven Token') // token name
+  const [unitName, setUnitName] = useState<string>('ELE')               // short ticker
+  const [total, setTotal] = useState<string>('10000000000')                    // human-readable total
+  const [decimals, setDecimals] = useState<string>('9')                 // 0 = whole tokens only
 
   const [loading, setLoading] = useState<boolean>(false)
 
